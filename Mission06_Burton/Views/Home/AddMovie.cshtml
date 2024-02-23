@@ -4,28 +4,27 @@
 @{
 }
 
-@model Film
+@model AddMovie
 
-<h1>Add Film: New Movie Form</h1>
+<h1>New Movie Form</h1>
 
 <div>
     <form method="post">
-
         @* cateogry (required) *@
         <label asp-for="Category">Movie category:</label>
-        <input asp-for="Category" required />
+        <input asp-for="Category" required/>
         <br />
         @* title (required) *@
         <label asp-for="Title">Movie title:</label>
-        <input asp-for="Title" required />
+        <input asp-for="Title" required/>
         <br />
         @* year (required) *@
         <label asp-for="Year">Year made:</label>
-        <input asp-for="Year" required />
+        <input asp-for="Year" required/>
         <br />
         @* director (required) *@
         <label asp-for="Director">Director:</label>
-        <input asp-for="Director" required />
+        <input asp-for="Director" required/>
         <br />
         @* rating (dropdown - G, PG, PG-13, R, required) *@
         <label asp-for="Rating">Rating:</label>
@@ -47,10 +46,17 @@
         <label asp-for="LentTo">Lent To:</label>
         <input asp-for="LentTo" />
         <br />
+        @* copied to plex (y/n t/f, not required) *@
+        <label asp-for="CopiedToPlex">Copied to Plex:</label>
+        <select asp-for="CopiedToPlex">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <br />
         @* notes (25 char max, not required) *@
         <label asp-for="Notes">Notes:</label>
-        <input asp-for="Notes" maxlength="25" />
-        <br /> <br />
+        <input asp-for="Notes" maxlength="25"/>
+        <br/> <br />
 
         <button type="submit">Add Movie</button>
     </form>

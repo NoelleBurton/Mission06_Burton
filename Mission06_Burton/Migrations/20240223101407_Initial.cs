@@ -11,10 +11,10 @@ namespace Mission06_Burton.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Films",
+                name: "Movies",
                 columns: table => new
                 {
-                    FilmID = table.Column<int>(type: "INTEGER", nullable: false)
+                    MovieID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Category = table.Column<string>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
@@ -27,7 +27,7 @@ namespace Mission06_Burton.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Films", x => x.FilmID);
+                    table.PrimaryKey("PK_Movies", x => x.MovieID);
                 });
         }
 
@@ -35,7 +35,7 @@ namespace Mission06_Burton.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Films");
+                name: "Movies");
         }
     }
 }

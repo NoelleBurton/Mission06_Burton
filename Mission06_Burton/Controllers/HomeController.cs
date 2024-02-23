@@ -1,18 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Mission06_Burton.Models;
 using System.Diagnostics;
 
-namespace Mission6_Burton.Controllers
+namespace Mission06_Burton.Controllers
 {
     public class HomeController : Controller
     {
-        private FilmContext _context;
 
-        public HomeController(FilmContext temp)
+        private MovieContext _context;
+
+        public HomeController(MovieContext temp)
         {
             _context = temp;
         }
+
         public IActionResult Index()
         {
             return View();
@@ -23,21 +24,27 @@ namespace Mission6_Burton.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddFilm()
+        public IActionResult AddMovie()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult AddFilm(Film response)
+        public IActionResult AddMovie(AddMovie response)
         {
-            _context.Films.Add(response);
+            _context.Movies.Add(response);
             _context.SaveChanges();
 
             return View("Response", response);
         }
 
+        public IActionResult MovieTable()
+        {
+            var movieList = _context.Movies
+                .OrderBy(x => x.Title).ToList();
 
+            return View(movieList);
+        }
 
     }
 }
